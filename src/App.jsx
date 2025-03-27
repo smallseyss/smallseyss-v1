@@ -275,6 +275,83 @@ ${formData.message}
     return () => document.removeEventListener('click', debouncedCreateSparkle);
   }, []);
 
+  const ImagePreviewModal = ({ image, onClose, onNext, onPrev }) => {
+    // Handle background click
+    const handleBackgroundClick = (e) => {
+      // Close if clicking the modal background (the dark overlay)
+      if (e.target.className === styles.imagePreviewModal) {
+        onClose();
+      }
+    };
+
+    // Add/remove body scroll lock
+    useEffect(() => {
+      const scrollY = window.scrollY;
+      const body = document.body;
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollY}px`;
+      body.style.width = '100%';
+      body.style.left = '0';
+      
+      return () => {
+        body.style.position = '';
+        body.style.top = '';
+        body.style.width = '';
+        body.style.left = '';
+        window.scrollTo(0, parseInt(scrollY || '0'));
+      };
+    }, []);
+
+    if (!image) return null;
+
+    return (
+      <div 
+        className={styles.imagePreviewModal}
+        onClick={handleBackgroundClick}
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className={styles.modalContent}>
+          <div className={styles.modalImageContainer}>
+            <img 
+              src={image} 
+              alt="Preview" 
+              className={styles.modalImage}
+              loading="eager"
+            />
+          </div>
+          <button 
+            className={`${styles.modalNavButton} ${styles.modalPrevButton}`}
+            onClick={onPrev}
+            aria-label="Previous image"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M14.6 18l1.4-1.4L11.4 12l4.6-4.6L14.6 6l-6 6z"/>
+            </svg>
+          </button>
+          <button 
+            className={`${styles.modalNavButton} ${styles.modalNextButton}`}
+            onClick={onNext}
+            aria-label="Next image"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M9.4 18L8 16.6l4.6-4.6L8 7.4 9.4 6l6 6z"/>
+            </svg>
+          </button>
+          <button 
+            className={styles.closeButton} 
+            onClick={onClose}
+            aria-label="Close preview"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       {/* Navigation Bar */}
@@ -329,7 +406,7 @@ ${formData.message}
           <h1 className={styles.heroTitle}>Anna Seyss</h1>
           <p className={styles.heroSubtitle}>smallseyss.ink</p>
           <p className={styles.heroDescription}>
-            creating tiny handwritten lettering and fine line tattoos with love in Berlin ✨
+            creating tiny handwritten letterings and fine line tattoos with love in Berlin ✨
           </p>
           <div className={styles.heroButtons}>
             <a href="https://instagram.com/smallseyss.ink" target="_blank" rel="noopener noreferrer" className={styles.heroButtonDark}>
@@ -410,42 +487,14 @@ ${formData.message}
           </div>
 
           {/* Image Preview Modal */}
-          <div 
-            className={styles.imagePreviewModal}
-            data-visible={!!previewImage}
-            onClick={closePreview}
-          >
-            <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
-              <button className={styles.closeButton} onClick={closePreview}>
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                  <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                </svg>
-              </button>
-              {previewImage && (
-                <img 
-                  src={previewImage} 
-                  alt="Preview" 
-                  className={styles.modalImage}
-                />
-              )}
-              <button 
-                className={styles.modalPrevButton}
-                onClick={showPrevImage}
-              >
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                  <path fill="currentColor" d="M14.6 18l1.4-1.4L11.4 12l4.6-4.6L14.6 6l-6 6z"/>
-                </svg>
-              </button>
-              <button 
-                className={styles.modalNextButton}
-                onClick={showNextImage}
-              >
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                  <path fill="currentColor" d="M9.4 18L8 16.6l4.6-4.6L8 7.4 9.4 6l6 6z"/>
-                </svg>
-              </button>
-            </div>
-          </div>
+          {previewImage && (
+            <ImagePreviewModal
+              image={previewImage}
+              onClose={closePreview}
+              onNext={showNextImage}
+              onPrev={showPrevImage}
+            />
+          )}
 
           <div className={styles.portfolioActions}>
             <a 
