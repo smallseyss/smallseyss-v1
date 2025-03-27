@@ -329,7 +329,7 @@ ${formData.message}
           <h1 className={styles.heroTitle}>Anna Seyss</h1>
           <p className={styles.heroSubtitle}>smallseyss.ink</p>
           <p className={styles.heroDescription}>
-            creating delicate handwritten lettering and fine line tattoos with love in Berlin ✨
+            creating tiny handwritten lettering and fine line tattoos with love in Berlin ✨
           </p>
           <div className={styles.heroButtons}>
             <a href="https://instagram.com/smallseyss.ink" target="_blank" rel="noopener noreferrer" className={styles.heroButtonDark}>
@@ -499,7 +499,6 @@ ${formData.message}
                   className={styles.input}
                 />
               </div>
-            </div>
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label htmlFor="phone" className={styles.label}>Phone Number</label>
@@ -529,7 +528,7 @@ ${formData.message}
             </div>
             <div className={styles.formRow}>
               <div className={styles.inputGroup}>
-                <label htmlFor="size">Size</label>
+                <label htmlFor="size" className={styles.label}>Size</label>
                 <select
                   id="size"
                   name="size"
@@ -545,8 +544,10 @@ ${formData.message}
                   <option value="large">large (10cm+)</option>
                 </select>
               </div>
+              </div>
+              <div className={styles.formRow}>
               <div className={styles.inputGroup}>
-                <label htmlFor="placement">Placement</label>
+                <label htmlFor="placement" className={styles.label}>Placement</label>
                 <select
                   id="placement"
                   name="placement"
@@ -564,9 +565,10 @@ ${formData.message}
                   <option value="other">other</option>
                 </select>
               </div>
+              </div>
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="preferredDate">Availability for your appointment</label>
+              <label htmlFor="preferredDate" className={styles.label}>Availability for your appointment</label>
               <input
                 type="text"
                 id="preferredDate"
