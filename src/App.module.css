@@ -1,0 +1,925 @@
+.container {
+  min-height: 100vh;
+  background-color: white;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 30;
+}
+
+.navBrand {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoIcon {
+  width: 80px;
+  height: 80px;
+  filter: brightness(0) invert(1);
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.navLink:hover {
+  opacity: 1;
+}
+
+.bookNowButton {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.bookNowButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 10;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+  animation: fadeIn 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroLogo {
+  width: 120px;
+  height: 120px;
+  filter: brightness(0) invert(1);
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.heroTitle {
+  font-size: 6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.heroSubtitle {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+.heroDescription {
+  font-size: 1.25rem;
+  opacity: 0;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+.heroButton {
+  background-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 180px;
+  justify-content: center;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+}
+
+.heroButton:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.heroButtonDark {
+  composes: heroButton;
+  background-color: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.heroButtonDark:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.instagramIcon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+/* Portfolio Section */
+.portfolioSection {
+  padding: 6rem 2rem;
+  background-color: #000000;
+  color: white;
+}
+
+.portfolioContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolioTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.portfolioTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: #60A5FA;
+}
+
+.portfolioGridContainer {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 3rem;
+  max-width: 1200px;
+  padding: 0 4rem;
+}
+
+.portfolioGridWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.portfolioGridSet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: 
+    opacity 0.5s ease-in-out,
+    visibility 0.5s,
+    transform 0.5s ease-in-out;
+}
+
+.portfolioGridSet[data-active="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  position: relative;
+}
+
+.portfolioGridSet[data-active="false"][data-direction="prev"] {
+  transform: translateX(-100%);
+}
+
+.portfolioGridSet[data-active="false"][data-direction="next"] {
+  transform: translateX(100%);
+}
+
+.portfolioItem {
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.portfolioItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolioItem:hover img {
+  transform: scale(1.15);
+}
+
+.portfolioActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.viewMoreButton {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.viewMoreButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.portfolioNextIndicator,
+.portfolioPrevIndicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.portfolioNextIndicator {
+  right: 0;
+}
+
+.portfolioPrevIndicator {
+  left: 0;
+}
+
+.portfolioNextIndicator:hover,
+.portfolioPrevIndicator:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.arrowIcon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.9;
+}
+
+.heroButton:hover .arrowIcon {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* Add animation for the arrow */
+@keyframes subtleBounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+.arrowIndicator:hover .arrowIcon {
+  animation: subtleBounce 1.5s ease-in-out infinite;
+}
+
+.bookingSection {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.bookingContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 3rem;
+}
+
+.bookingTitle {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.bookingSubtitle {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #6b7280;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #60A5FA;
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.formNote {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-top: -1rem;
+}
+
+.submitButton {
+  background-color: #60A5FA;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #3B82F6;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.successMessage,
+.errorMessage {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.successMessage {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.errorMessage {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Add responsive styles */
+@media (max-width: 640px) {
+  .bookingContainer {
+    padding: 2rem;
+  }
+
+  .bookingTitle {
+    font-size: 2.5rem;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Image Preview Modal */
+.imagePreviewModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.imagePreviewModal[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 960px;
+  height: 960px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.closeButton {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.closeButton:hover {
+  opacity: 0.8;
+}
+
+.modalNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  z-index: 10;
+}
+
+.modalNavButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modalPrevButton {
+  composes: modalNavButton;
+  left: -6rem;
+}
+
+.modalNextButton {
+  composes: modalNavButton;
+  right: -6rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.landingPage {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollIndicatorContainer {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+  visibility: visible;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out 1s forwards;
+}
+
+.scrollIndicatorContainer[data-hidden="true"] {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: 
+    opacity 0.3s ease-out,
+    visibility 0.3s ease-out,
+    transform 0.3s ease-out;
+}
+
+.scrollIndicator {
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.scrollIndicator:hover {
+  opacity: 1;
+  transform: translateY(4px);
+}
+
+.arrow {
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  position: relative;
+  animation: bounce 2s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.arrow::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  margin-top: -4px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Footer Styles */
+.footer {
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 2rem 0;
+  margin-top: 2rem;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 3rem;
+}
+
+.footerLink {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.footerLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.2s ease;
+}
+
+.footerLink:hover {
+  color: white;
+}
+
+.footerLink:hover::after {
+  width: 100%;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 1.5rem 0;
+    margin-top: 1.5rem;
+  }
+
+  .footerContent {
+    padding: 0 1rem;
+  }
+
+  .footerLinks {
+    gap: 2rem;
+  }
+}
+
+/* Legal Sections */
+.legalSection {
+  background-color: var(--background-light);
+  padding: 4rem 0;
+  scroll-margin-top: 5rem;
+}
+
+.legalContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.legalContent h2 {
+  color: var(--text-dark);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.legalContent h3 {
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+}
+
+.legalContent h4 {
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.legalContent p {
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.legalContent a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.legalContent a:hover {
+  text-decoration: underline;
+}
+
+/* Legal Pages */
+.legalPage {
+  min-height: 100vh;
+  background-color: var(--background-light);
+  padding: 8rem 2rem 4rem;
+}
+
+.legalContent {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.legalContent h1 {
+  color: var(--text-dark);
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.legalContent h2 {
+  color: var(--text-dark);
+  font-size: 1.8rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.legalContent h3 {
+  color: var(--text-dark);
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem;
+}
+
+.legalContent p {
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.legalContent a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.legalContent a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .legalPage {
+    padding: 6rem 1rem 2rem;
+  }
+
+  .legalContent {
+    padding: 2rem;
+  }
+
+  .legalContent h1 {
+    font-size: 2rem;
+  }
+
+  .legalContent h2 {
+    font-size: 1.5rem;
+  }
+
+  .legalContent h3 {
+    font-size: 1.2rem;
+  }
+} 
