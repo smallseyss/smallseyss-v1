@@ -8,29 +8,25 @@ function Impressum() {
         
         <h2>Angaben gemäß § 5 TMG</h2>
         <p>
-          Anna Seyss<br />
-          smallseyss.ink<br />
-          [Your Studio Address]<br />
+          <b>Anna-Maria Seyss</b><br />
+          unter dem Namen <i>smallseyss.ink</i><br />
+          Resident im Silent Sea Studio Berlin<br />
+          Pappelallee 69<br />
           Berlin, Germany
         </p>
 
         <h2>Kontakt</h2>
         <p>
-          E-Mail: booking@smallseyss.ink<br />
+          E-Mail: hey@smallseyss.ink<br />
           Instagram: @smallseyss.ink
         </p>
 
         <h2>Umsatzsteuer-ID</h2>
         <p>
           Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br />
-          [Your Tax ID]
+          **aktuell noch als Kleinunternehmerin gemeldet und somit muss bisher keine Umsatzsteuer erhoben werden**
         </p>
 
-        <h2>Berufshaftpflichtversicherung</h2>
-        <p>
-          [Your Insurance Information]<br />
-          Geltungsbereich: Deutschland
-        </p>
 
         <h2>Streitschlichtung</h2>
         <p>
@@ -39,7 +35,7 @@ function Impressum() {
             https://ec.europa.eu/consumers/odr/
           </a>
           <br />
-          Unsere E-Mail-Adresse finden Sie oben im Impressum.
+          Meine E-Mail-Adresse finden Sie oben im Impressum.
         </p>
       </div>
     </div>
