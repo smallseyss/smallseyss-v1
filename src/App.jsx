@@ -148,7 +148,7 @@ ${formData.message}
       }
 
       await emailjs.send(
-        'service_j95v92f',
+        'service_0l737m9',
         'template_dwir8mk',
         templateParams
       )
@@ -449,7 +449,7 @@ ${formData.message}
 
           <div className={styles.portfolioActions}>
             <a 
-              href="https://instagram.com/smallseyss" 
+              href="https://instagram.com/smallseyss.ink" 
               target="_blank" 
               rel="noopener noreferrer" 
               className={styles.viewMoreButton}
@@ -468,7 +468,8 @@ ${formData.message}
         <div className={styles.bookingContainer}>
           <h2 className={styles.bookingTitle}>Book Your Appointment</h2>
           <p className={styles.bookingSubtitle}>
-            Fill out the form below to request a tattoo appointment with me 🧚✨.
+            Fill out the form below to request a tattoo appointment with me 🧚✨<br />
+            <i>Du kannst es auch auf Deutsch ausfüllen</i> ☺️
           </p>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formRow}>
@@ -527,55 +528,55 @@ ${formData.message}
               </div>
             </div>
             <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <label htmlFor="preferredDate" className={styles.label}>Preferred Date</label>
-                <input
-                  type="date"
-                  id="preferredDate"
-                  name="preferredDate"
-                  placeholder="Pick a date"
-                  value={formData.preferredDate}
-                  onChange={handleChange}
-                  required
-                  className={styles.input}
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="size" className={styles.label}>Size</label>
-                <select 
-                  id="size" 
-                  name="size" 
-                  className={styles.select} 
+              <div className={styles.inputGroup}>
+                <label htmlFor="size">Size</label>
+                <select
+                  id="size"
+                  name="size"
                   value={formData.size}
                   onChange={handleChange}
                   required
+                  className={styles.input}
                 >
                   <option value="" disabled>Select size</option>
-                  <option value="tiny">Tiny (1-3cm)</option>
-                  <option value="small">Small (3-6cm)</option>
-                  <option value="medium">Medium (6-12cm)</option>
-                  <option value="large">Large (12-20cm)</option>
+                  <option value="tiny">tiny (1-3cm)</option>
+                  <option value="small">small (3-5cm)</option>
+                  <option value="medium">medium (5-10cm)</option>
+                  <option value="large">large (10cm+)</option>
+                </select>
+              </div>
+              <div className={styles.inputGroup}>
+                <label htmlFor="placement">Placement</label>
+                <select
+                  id="placement"
+                  name="placement"
+                  value={formData.placement}
+                  onChange={handleChange}
+                  required
+                  className={styles.input}
+                >
+                  <option value="" disabled>Select placement</option>
+                  <option value="arm">arm</option>
+                  <option value="leg">leg</option>
+                  <option value="torso">chest</option>
+                  <option value="back">back</option>
+                  <option value="hand">hand</option>
+                  <option value="other">other</option>
                 </select>
               </div>
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="placement" className={styles.label}>Placement</label>
-              <select 
-                id="placement" 
-                name="placement" 
-                className={styles.select} 
-                value={formData.placement}
+              <label htmlFor="preferredDate">Availability for your appointment</label>
+              <input
+                type="text"
+                id="preferredDate"
+                name="preferredDate"
+                value={formData.preferredDate}
                 onChange={handleChange}
+                placeholder="e.g., after 4pm any day next week, between 10am and 6pm any day next week, flexible"
                 required
-              >
-                <option value="" disabled>Select placement</option>
-                <option value="arm">Arm</option>
-                <option value="leg">Leg</option>
-                <option value="back">Back</option>
-                <option value="chest">Chest</option>
-                <option value="ribs">Ribs</option>
-                <option value="other">Other (specify in description)</option>
-              </select>
+                className={styles.input}
+              />
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="message" className={styles.label}>Tattoo Description</label>
