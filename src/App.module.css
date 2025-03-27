@@ -3,12 +3,17 @@
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    transparent 30vh,
-    rgba(0, 0, 0, 0.95) 60vh,
-    rgba(0, 0, 0, 0.98) 80vh,
+    transparent 80vh,
+    rgba(0, 0, 0, 0.95) 90vh,
     #000000 100vh
   );
   position: relative;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' style='fill: white;'><text y='20'>🪄</text></svg>"), auto;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .container::before {
@@ -68,6 +73,7 @@
   font-weight: 400;
   opacity: 0.9;
   transition: opacity 0.2s;
+  cursor: pointer;
 }
 
 .navLink:hover {
@@ -84,6 +90,7 @@
   font-size: 1rem;
   font-weight: 500;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .bookNowButton:hover {
@@ -98,7 +105,6 @@
   position: relative;
   color: white;
   overflow: hidden;
-  margin-bottom: -200px;
 }
 
 .heroOverlay {
@@ -240,6 +246,7 @@
   justify-content: center;
   letter-spacing: 0.01em;
   text-transform: lowercase;
+  cursor: pointer;
 }
 
 .heroButton:hover {
@@ -271,18 +278,20 @@
 
 /* Portfolio Section */
 .portfolioSection {
-  padding: 6rem 2rem;
+  min-height: 100vh;
+  padding: 8rem 2rem;
   background: transparent;
   color: white;
   position: relative;
-  margin-top: -100px;
-  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .portfolioContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 2rem;
+  width: 100%;
 }
 
 .portfolioTitle {
@@ -327,7 +336,7 @@
   gap: 2rem;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: 
     opacity 0.5s ease-in-out,
     visibility 0.5s,
@@ -342,11 +351,17 @@
 }
 
 .portfolioGridSet[data-active="false"][data-direction="prev"] {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 
 .portfolioGridSet[data-active="false"][data-direction="next"] {
-  transform: translateX(100%);
+  transform: translateX(-100%);
+}
+
+.portfolioGridSet[data-active="false"][data-direction="null"] {
+  transform: translateX(0);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .portfolioItem {
@@ -375,19 +390,42 @@
 }
 
 .viewMoreButton {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  border-radius: 12px;
   color: white;
   text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 500;
-  transition: background-color 0.2s;
-  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 180px;
+  justify-content: center;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  cursor: pointer;
 }
 
 .viewMoreButton:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.viewMoreButton .instagramIcon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.viewMoreButton:hover .instagramIcon {
+  opacity: 1;
 }
 
 .portfolioNextIndicator,
@@ -443,13 +481,15 @@
   animation: subtleBounce 1.5s ease-in-out infinite;
 }
 
+/* Booking Section */
 .bookingSection {
   min-height: 100vh;
-  padding: 6rem 2rem;
+  padding: 8rem 2rem;
   background: transparent;
   color: white;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .bookingContainer {
@@ -511,6 +551,11 @@
   color: white;
   font-size: 1rem;
   transition: border-color 0.2s;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .input::placeholder,
@@ -717,7 +762,7 @@
 
 .landingPage {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -832,6 +877,7 @@
   font-size: 0.9rem;
   transition: all 0.2s ease;
   position: relative;
+  cursor: pointer;
 }
 
 .footerLink::after {
@@ -989,5 +1035,36 @@
 
   .legalContent h3 {
     font-size: 1.2rem;
+  }
+}
+
+/* Sparkle Animation */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  transform-origin: center;
+  animation: sparkleAnimation 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  z-index: 1000;
+  font-size: 28px;
+  user-select: none;
+  will-change: transform, opacity;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes sparkleAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2) rotate(-15deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -60%) scale(1.2) rotate(5deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -100%) scale(0.8) rotate(15deg);
+    opacity: 0;
   }
 } 

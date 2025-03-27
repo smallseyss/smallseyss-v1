@@ -35,15 +35,15 @@ function Datenschutz() {
 
         <h2>2. Hosting</h2>
         <p>
-          Wir hosten die Inhalte unserer Website bei [Your Hosting Provider].
+          Wir hosten die Inhalte dieser Website bei Cloudflare und GoDaddy.
         </p>
 
         <h2>3. Kontaktformular</h2>
         <p>
           Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem 
           Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung 
-          der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben 
-          wir nicht ohne Ihre Einwilligung weiter.
+          der Anfrage und für den Fall von Anschlussfragen an uns via E-Mail versendet. Diese Daten geben 
+          wir nicht ohne Ihre Einwilligung weiter. Die Daten werden nicht für andere Zwecke verwendet.
         </p>
 
         <h2>4. Ihre Rechte</h2>

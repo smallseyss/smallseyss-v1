@@ -19,7 +19,7 @@ function App() {
 
   // Add portfolio state
   const [currentSet, setCurrentSet] = useState(0)
-  const [slideDirection, setSlideDirection] = useState('next')
+  const [slideDirection, setSlideDirection] = useState(null)
   
   // Add preview state and handlers
   const [previewImage, setPreviewImage] = useState(null)
@@ -213,6 +213,66 @@ ${formData.message}
     })
   }
 
+  const createSparkle = (e) => {
+    // Don't create sparkles if clicking on interactive elements
+    if (
+      e.target.closest('button') ||
+      e.target.closest('a') ||
+      e.target.closest('input') ||
+      e.target.closest('textarea') ||
+      e.target.closest('.' + styles.portfolioItem) ||
+      e.target.closest('.' + styles.modalNavButton) ||
+      e.target.closest('.' + styles.closeButton)
+    ) {
+      return;
+    }
+
+    const sparkles = ['✨', '⭐️', '🌟', '💫'];
+    const sparkleContainer = document.createElement('div');
+    const numSparkles = Math.floor(Math.random() * 2) + 3; // 3-4 sparkles
+
+    // Create sparkles in a container for better performance
+    for (let i = 0; i < numSparkles; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = styles.sparkle;
+      sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+      
+      // Add slight random offset for each sparkle
+      const offsetX = i === 0 ? 0 : (Math.random() * 60 - 30);
+      const offsetY = i === 0 ? 0 : (Math.random() * 60 - 30);
+      const delay = i * 50; // Stagger the animations
+      
+      sparkle.style.left = (e.clientX + offsetX) + 'px';
+      sparkle.style.top = (e.clientY + offsetY) + 'px';
+      sparkle.style.animationDelay = delay + 'ms';
+      
+      sparkleContainer.appendChild(sparkle);
+    }
+
+    document.body.appendChild(sparkleContainer);
+
+    // Clean up all sparkles after the longest animation + delay
+    setTimeout(() => {
+      if (sparkleContainer && document.body.contains(sparkleContainer)) {
+        sparkleContainer.remove();
+      }
+    }, 1500); // Increased to account for delays
+  };
+
+  // Debounce the sparkle creation to prevent too many sparkles
+  const debouncedCreateSparkle = (e) => {
+    if (window.lastSparkleTime && Date.now() - window.lastSparkleTime < 50) {
+      return; // Prevent creating sparkles too quickly
+    }
+    window.lastSparkleTime = Date.now();
+    createSparkle(e);
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', debouncedCreateSparkle);
+    return () => document.removeEventListener('click', debouncedCreateSparkle);
+  }, []);
+
   return (
     <div className={styles.container}>
       {/* Navigation Bar */}
@@ -298,7 +358,7 @@ ${formData.message}
                   key={setIndex} 
                   className={styles.portfolioGridSet}
                   data-active={setIndex === currentSet}
-                  data-direction={slideDirection}
+                  data-direction={slideDirection || (setIndex === 0 ? null : 'prev')}
                 >
                   {set.map((src, index) => (
                     <div 
@@ -374,14 +434,17 @@ ${formData.message}
 
           <div className={styles.portfolioActions}>
             <a 
-              href="https://instagram.com/smallseyss.ink" 
+              href="https://instagram.com/smallseyss" 
               target="_blank" 
-              rel="noopener noreferrer"
+              rel="noopener noreferrer" 
               className={styles.viewMoreButton}
             >
-              View More on Instagram
-        </a>
-      </div>
+              view more on instagram
+              <svg className={styles.instagramIcon} viewBox="0 0 24 24" width="20" height="20">
+                <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 
